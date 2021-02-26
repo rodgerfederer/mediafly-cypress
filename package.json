@@ -1,0 +1,22 @@
+{
+  "name": "masha",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "files": [
+    "app",
+    "cypress"
+  ],
+  "scripts": {
+    "cy:open": "cypress open"
+  },
+  "dependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.7",
+    "cypress": "^6.3.0",
+    "typescript": "3.7.4"
+  },
+  "devDependencies": {
+    "cypress-file-upload": "^5.0.2"
+  }
+}
