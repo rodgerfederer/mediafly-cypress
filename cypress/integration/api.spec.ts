@@ -58,6 +58,20 @@
                     expect(response.status).to.equal(200)
                     expect(response.body).contains("IMAGENAME")
                 })
+
+        it('verify failed pop', () => {
+            cy.request({
+                method: 'POST',
+                url: 'http://127.0.0.1:9090/queues/NotFound/pop',
+                failOnStatusCode: false
+            })
+                .then((response: Cypress.Response) => {
+                    let test = JSON.parse(response.body)
+                    expect(response.status).to.equal(500)
+                    expect(test).to.have.property("result").and.to.equal("bad")
+                    expect(test).to.have.property("reason").and.to.equal("Nothing on the queue to pop")
+                })
+            })
         })
 
     })

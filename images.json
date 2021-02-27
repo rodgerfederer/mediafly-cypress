@@ -1,5 +1,16 @@
 {
   "images": [
-
+    {
+      "id": "white-cat.png",
+      "original": "/white-cat.png",
+      "status": "completed",
+      "processed": "/processed-white-cat.png"
+    },
+    {
+      "id": "black-cat.png",
+      "original": "/black-cat.png",
+      "status": "completed",
+      "processed": "/processed-black-cat.png"
+    }
   ]
 }
