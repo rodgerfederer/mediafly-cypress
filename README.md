@@ -10,9 +10,8 @@ Install npm (https://www.npmjs.com/get-npm)
     5. python application.py
     6. python queuenew.py
     7. python worker.py
-    8. npm run cy:open
-    9. Type "npm install --save-dev cypress-file-upload"
-    10. Type “npm run cy:open”
+    8. npm install --save-dev cypress-file-upload
+    9. npm run cy:open
 
 Run project:
 1. Make sure you have three command windows open for your server

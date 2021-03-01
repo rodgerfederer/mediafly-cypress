@@ -1,13 +1,16 @@
-import {TestSite} from "../support/consts";
+import {TestSite8080} from "../support/consts"
 import '../support/index'
 import 'cypress-file-upload';
 
 context('The Image Processor Page', () => {
+    before('goto image processor page', () => {
+        cy.writeFile("images.json", {images: []})
+    })
 
     describe('Image Processor Page' , () => {
 
         before('goto image processor page', () => {
-            cy.visit(TestSite)
+            cy.visit(TestSite8080)
         })
 
         it('has the correct header', () => {
@@ -40,18 +43,8 @@ context('The Image Processor Page', () => {
 
     describe('Choosing file to upload', () => {
 
-        before('goto image processor page', () => {
-            cy.visit(TestSite)
-        })
-
-        it('validate picture uploaded and has completed status', () => {
-            cy.get('[data-cy="choose"]').attachFile('images/white-cat.png')
-            cy.get('[data-cy="upload"]').click()
-            cy.contains('white-cat').siblings().eq(0).should('contain', 'pending')
-            cy.wait(1000)
-            cy.reload()
-            cy.contains('white-cat').siblings().eq(0).should('contain', 'completed')
-            cy.contains('white-cat').siblings().eq(2).should('contain', 'Processed')
+        beforeEach('goto image processor page', () => {
+            cy.visit(TestSite8080)
         })
 
         it('validate picture uploaded and has pending status', () => {
@@ -60,6 +53,17 @@ context('The Image Processor Page', () => {
             cy.contains('black-cat').siblings().eq(0).should('contain', 'pending')
         })
 
+        it('validate picture uploaded and has completed status', () => {
+            cy.wait(3000).reload()
+            cy.contains('black-cat').siblings().eq(0).should('contain', 'completed')
+            cy.contains('black-cat').siblings().eq(2).should('contain', 'Processed')
+        })
+
+        it('validate "failed" on non-picture upload', () => {
+            cy.get('[data-cy="choose"]').attachFile('images/bad-image.png')
+            cy.get('[data-cy="upload"]').click()
+            cy.contains('bad-image').siblings().eq(0).should('contain', 'failed')
+        })
     })
 
 })
