@@ -13,15 +13,8 @@ Install npm (https://www.npmjs.com/get-npm)
     8. npm install --save-dev cypress-file-upload
     9. npm run cy:open
 
-Run project:
-1. Make sure you have three command windows open for your server
-    In the first window you are going to type -
-    python application.py
-    In the the second window you are going to type -
-    python queuenew.py
-    In the third window you are going to type -
-    python worker.py ("it should tick every 5 seconds or so to pop what's in the queue")
-
+Run the project:
+1. Make sure you have three command windows open for your server.
 2. If you are getting an error about "secure_filename" in the application.py, change this line -
     "from werkzeug import secure_filename" to from "werkzeug.utils import secure_filename"
 
